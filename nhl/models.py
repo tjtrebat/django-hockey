@@ -41,3 +41,13 @@ class Player(models.Model):
     def __unicode__(self):
         return self.name
 
+class Game(models.Model):
+    visitor = models.ForeignKey("Team", related_name="gamesAsVisitor")
+    home = models.ForeignKey("Team", related_name="gamesAsHome")
+    time = models.DateTimeField()
+
+    class Meta:
+        ordering = ['time',]
+
+    def __unicode__(self):
+        return "%s at %s" % (self.visitor, self.home,)

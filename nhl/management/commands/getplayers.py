@@ -19,9 +19,7 @@ class Command(BaseCommand):
                 team = Team.objects.get(acronym=team_acronym)
             except Team.DoesNotExist:
                 raise CommandError('Team "%s" does not exist' % team_acronym)
-
             soup = BeautifulSoup(urllib2.urlopen("http://www.nhl.com/ice/playerstats.htm?season=20112012&team=" + team_acronym).read())
-
             for row in soup('table', {'class' : 'data stats'})[0].tbody('tr'):
                 tds = row('td')
                 player_name = tds[1]('a')[0].string
