@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class Team(models.Model):
     name = models.CharField(max_length=255)
+    acronym = models.CharField(max_length=5)
     conference = models.CharField(max_length=255, choices=(("E", "Eastern"), ("W", "Western")))
     seasons_played = models.PositiveIntegerField()
     cup_appearances = models.PositiveIntegerField()
@@ -34,8 +35,8 @@ class Player(models.Model):
     short_handed_goals = models.PositiveIntegerField()
     game_winning_goals = models.PositiveIntegerField()
     shots = models.PositiveIntegerField()
-    shot_percentage = models.PositiveIntegerField()
-    average_time = models.TimeField()
+    shot_percentage = models.FloatField()
+    average_time = models.CharField(max_length=255)
 
     def __unicode__(self):
         return self.name

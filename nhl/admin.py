@@ -6,5 +6,8 @@ from django.contrib import admin
 class TeamAdmin(admin.ModelAdmin):
     list_filter = ('conference',)
 
+class PlayerAdmin(admin.ModelAdmin):
+    list_filter = ('team',)
+
 admin.site.register(Team, TeamAdmin)
-admin.site.register(Player)
+admin.site.register(Player, PlayerAdmin)
