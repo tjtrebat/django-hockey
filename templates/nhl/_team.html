@@ -1,0 +1,20 @@
+<div>
+    <h3><a href="#">{{ team }}</a></h3>
+    <div>
+        <ul id="{{ team.acronym }}" class="team-nav">
+            <li><a class="roster" href="#">Roster</a></li>
+            <li><a href="#">Schedule</a></li>
+        </ul>
+        <ul class="team-stats">
+            <li>Seasons Played: {{ team.seasons_played }}</li>
+            <li>Cup Appearances: {{ team.cup_appearances }}</li>
+            <li>Titles: {{ team.titles }}</li>
+            <li>Record: {{ team.wins }}-{{ team.ties }}-{{ team.losses }}</li>
+            <li>Shootout Record: {{ team.shootout_wins }}-{{ team.shootout_losses }}</li>
+            <li>Division Finish: {{ team.division_finish }}</li>
+            <li>Conference Finish: {{ team.conference_finish }}</li>
+            <li>Goals for: {{ team.goals_for }}</li>
+            <li>Goals against: {{ team.goals_against }}</li>
+        </ul>
+    </div>
+</div>

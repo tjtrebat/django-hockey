@@ -11,6 +11,17 @@
         $(function(){
             $("#e-accordion,#w-accordion").accordion({header: "h3", collapsible: true, active: false});
             $("#tabs").tabs();
+            $(".roster").click(function(){
+                $.getJSON("/hockey/roster/" + $(this).closest("ul").attr("id").toLowerCase(), function(data){
+                    for (var player in data) {
+                        
+                    }
+                    //$("#overlay").show();
+                });
+            });
+            $(".ui-widget-overlay").click(function(){
+               $("#overlay").hide();
+            });
         });
     </script>
 </head>
@@ -24,26 +35,7 @@
             <div id="e-accordion">
                 {% for team in object_list %}
                     {% if team.conference == "E" %}
-                        <div>
-                            <h3><a href="#">{{ team }}</a></h3>
-                            <div>
-                                <ul class="team-nav">
-                                    <li><a href="#">Roster</a></li>
-                                    <li><a href="#">Schedule</a></li>
-                                </ul>
-                                <ul class="team-stats">
-                                    <li>Seasons Played: {{ team.seasons_played }}</li>
-                                    <li>Cup Appearances: {{ team.cup_appearances }}</li>
-                                    <li>Titles: {{ team.titles }}</li>
-                                    <li>Record: {{ team.wins }}-{{ team.ties }}-{{ team.losses }}</li>
-                                    <li>Shootout Record: {{ team.shootout_wins }}-{{ team.shootout_losses }}</li>
-                                    <li>Division Finish: {{ team.division_finish }}</li>
-                                    <li>Conference Finish: {{ team.conference_finish }}</li>
-                                    <li>Goals for: {{ team.goals_for }}</li>
-                                    <li>Goals against: {{ team.goals_against }}</li>
-                                </ul>
-                            </div>
-                        </div>
+                        {% include "nhl/_team.html" %}
                     {% endif %}
                 {% endfor %}
             </div>
@@ -52,29 +44,36 @@
             <div id="w-accordion">
                 {% for team in object_list %}
                     {% if team.conference == "W" %}
-                        <div>
-                            <h3><a href="#">{{ team }}</a></h3>
-                            <div>
-                                <ul class="team-nav">
-                                    <li><a href="#">Roster</a></li>
-                                    <li><a href="#">Schedule</a></li>
-                                </ul>
-                                <ul class="team-stats">
-                                    <li>Seasons Played: {{ team.seasons_played }}</li>
-                                    <li>Cup Appearances: {{ team.cup_appearances }}</li>
-                                    <li>Titles: {{ team.titles }}</li>
-                                    <li>Record: {{ team.wins }}-{{ team.ties }}-{{ team.losses }}</li>
-                                    <li>Shootout Record: {{ team.shootout_wins }}-{{ team.shootout_losses }}</li>
-                                    <li>Division Finish: {{ team.division_finish }}</li>
-                                    <li>Conference Finish: {{ team.conference_finish }}</li>
-                                    <li>Goals for: {{ team.goals_for }}</li>
-                                    <li>Goals against: {{ team.goals_against }}</li>
-                                </ul>
-                            </div>
-                        </div>
+                        {% include "nhl/_team.html" %}
                     {% endif %}
                 {% endfor %}
             </div>
+        </div>
+        <div id="overlay" style="display:none;">
+			<!-- ui-dialog -->
+			<div class="ui-overlay"><div class="ui-widget-overlay"></div><div class="ui-widget-shadow ui-corner-all" style="width: 422px; height: 152px; position: absolute; left: 50px; top: 30px;"></div></div>
+			<div style="position: absolute; width: 400px; height: 130px;left: 50px; top: 30px; padding: 10px;" class="ui-widget ui-widget-content ui-corner-all">
+				<div class="ui-dialog-content ui-widget-content" style="background: none; border: 0;">
+					<table id="team_roster">
+                        <tr>
+                            <th>P</th>
+                            <th>Player</th>
+                            <th>GP</th>
+                            <th>G</th>
+                            <th>A</th>
+                            <th>Pts.</th>
+                            <th>+/-</th>
+                            <th>PIM</th>
+                            <th>PP</th>
+                            <th>SH</th>
+                            <th>GW</th>
+                            <th>S</th>
+                            <th>S%</th>
+                            <th>TOI/G</th>
+                        </tr>
+					</table>
+				</div>
+			</div>
         </div>
     </div>
 </body>

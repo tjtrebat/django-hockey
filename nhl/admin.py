@@ -2,7 +2,7 @@ __author__ = 'Tom'
 
 from django.contrib import admin
 from nhl.models import *
-from nhl.filters import GameListFilter
+#from nhl.filters import GameListFilter
 
 class TeamAdmin(admin.ModelAdmin):
     list_filter = ('conference',)

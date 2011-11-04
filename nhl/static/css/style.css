@@ -1,4 +1,8 @@
-body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
+body { font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
 
 .team-stats, .team-nav { list-style: none; }
+
+.team-nav li { display: inline; }
+
+.team-nav li a { color: #0000ff;}
 

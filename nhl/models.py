@@ -38,6 +38,9 @@ class Player(models.Model):
     shot_percentage = models.FloatField()
     average_time = models.CharField(max_length=255)
 
+    class Meta:
+        ordering = ('-points',)
+
     def __unicode__(self):
         return self.name
 
