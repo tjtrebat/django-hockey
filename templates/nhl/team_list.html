@@ -1,15 +1,11 @@
 {% extends "base.html" %}
 
 {% block js %}
+{{ block.super }}
 <script type="text/javascript">
     $(function(){
         $("#east_accordion,#west_accordion").accordion({header: "h3", collapsible: true, active: false});
         $("#tabs").tabs();
-        $(".dialog_list li a").hover(
-            function() { $(this).addClass('ui-state-hover'); },
-			function() { $(this).removeClass('ui-state-hover'); }
-        );
-        // Dialog
         $(".roster_dialog").dialog({
             autoOpen: false,
             width: 800,
@@ -26,6 +22,10 @@
             $(roster).dialog("open");
             return false;
         });
+        $(".dialog_list li a").hover(
+            function() { $(this).addClass('ui-state-hover'); },
+			function() { $(this).removeClass('ui-state-hover'); }
+        );
     });
 </script>
 {% endblock %}

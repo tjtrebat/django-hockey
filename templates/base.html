@@ -5,9 +5,10 @@
     <title>NHL Hockey</title>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/smoothness/jquery-ui-1.8.16.custom.css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
+    {% block js %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.2.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
-    {% block js %}{% endblock %}
+    {% endblock %}
 </head>
 <body>
     {% block content %}{% endblock %}
