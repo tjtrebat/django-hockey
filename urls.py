@@ -8,7 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'django.views.generic.list_detail.object_list', {'queryset': Team.objects.all()}, name='home'),
-    url(r'^hockey/', include('hockey.nhl.urls')),
+    url(r'^', include('hockey.nhl.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

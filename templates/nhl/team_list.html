@@ -1,80 +1,60 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title>NHL Hockey</title>
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/smoothness/jquery-ui-1.8.16.custom.css" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
-    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.2.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            $("#e-accordion,#w-accordion").accordion({header: "h3", collapsible: true, active: false});
-            $("#tabs").tabs();
-            $(".roster").click(function(){
-                $.getJSON("/hockey/roster/" + $(this).closest("ul").attr("id").toLowerCase(), function(data){
-                    for (var player in data) {
-                        
-                    }
-                    //$("#overlay").show();
-                });
-            });
-            $(".ui-widget-overlay").click(function(){
-               $("#overlay").hide();
-            });
+{% extends "base.html" %}
+
+{% block js %}
+<script type="text/javascript">
+    $(function(){
+        $("#east_accordion,#west_accordion").accordion({header: "h3", collapsible: true, active: false});
+        $("#tabs").tabs();
+        $(".dialog_list li a").hover(
+            function() { $(this).addClass('ui-state-hover'); },
+			function() { $(this).removeClass('ui-state-hover'); }
+        );
+        // Dialog
+        $(".roster_dialog").dialog({
+            autoOpen: false,
+            width: 800,
+            buttons: {
+                "Ok": function() {
+                    $(this).dialog("close");
+                }
+            }
         });
-    </script>
-</head>
-<body>
-    <div id="tabs">
-        <ul>
-            <li><a href="#tabs-1">Eastern</a></li>
-            <li><a href="#tabs-2">Western</a></li>
-        </ul>
-        <div id="tabs-1">
-            <div id="e-accordion">
-                {% for team in object_list %}
-                    {% if team.conference == "E" %}
-                        {% include "nhl/_team.html" %}
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        <div id="tabs-2">
-            <div id="w-accordion">
-                {% for team in object_list %}
-                    {% if team.conference == "W" %}
-                        {% include "nhl/_team.html" %}
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        <div id="overlay" style="display:none;">
-			<!-- ui-dialog -->
-			<div class="ui-overlay"><div class="ui-widget-overlay"></div><div class="ui-widget-shadow ui-corner-all" style="width: 422px; height: 152px; position: absolute; left: 50px; top: 30px;"></div></div>
-			<div style="position: absolute; width: 400px; height: 130px;left: 50px; top: 30px; padding: 10px;" class="ui-widget ui-widget-content ui-corner-all">
-				<div class="ui-dialog-content ui-widget-content" style="background: none; border: 0;">
-					<table id="team_roster">
-                        <tr>
-                            <th>P</th>
-                            <th>Player</th>
-                            <th>GP</th>
-                            <th>G</th>
-                            <th>A</th>
-                            <th>Pts.</th>
-                            <th>+/-</th>
-                            <th>PIM</th>
-                            <th>PP</th>
-                            <th>SH</th>
-                            <th>GW</th>
-                            <th>S</th>
-                            <th>S%</th>
-                            <th>TOI/G</th>
-                        </tr>
-					</table>
-				</div>
-			</div>
+        $(".roster_item a").click(function(){
+            var team = $(this).closest("ul").attr("id");
+            var roster = $("#roster_" + team);
+            $(roster).load("/roster/" + team);
+            $(roster).dialog("open");
+            return false;
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>2011-2012 - Regular Season</h1>
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">Eastern</a></li>
+        <li><a href="#tabs-2">Western</a></li>
+    </ul>
+    <div id="tabs-1">
+        <div id="east_accordion">
+            {% for team in object_list %}
+                {% if team.conference == "E" %}
+                    {% include "nhl/_team.html" %}
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
-</body>
-</html>
+    <div id="tabs-2">
+        <div id="west_accordion">
+            {% for team in object_list %}
+                {% if team.conference == "W" %}
+                    {% include "nhl/_team.html" %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,8 +1,43 @@
-body { font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
+body {
+    font: 62.5% "Trebuchet MS", sans-serif;
+    margin: 50px;
+}
 
-.team-stats, .team-nav { list-style: none; }
+ul {
+    list-style: none;
+}
 
-.team-nav li { display: inline; }
+.dialog_list li {
+    display: inline;
+}
 
-.team-nav li a { color: #0000ff;}
+.dialog_list li a {
+    padding: .4em 1em .4em 20px;
+    text-decoration: none;
+    position: relative;
+}
 
+.dialog_list li a span.ui-icon {
+    margin: -8px 5px 0px 0px;
+    position: absolute;
+    left: .2em;
+    top: 50%;
+}
+
+.roster_dialog {
+    display: none;
+    text-align: center;
+}
+
+#loader {
+    margin-top: 20px;
+}
+
+#roster_table {
+    font-size: 125%;
+    width: 100%;
+}
+
+#roster_table td {
+    text-align: center;
+}
