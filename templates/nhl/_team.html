@@ -1,11 +1,11 @@
 <div>
     <h3><a href="#">{{ team }}</a></h3>
     <div>
-        <ul id="{{ team.acronym }}" class="dialog_list">
-            <li class="roster_item">
-                <a href="#" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Roster</a>
+        <ul class="dialog_list">
+            <li>
+                <a href="{% url roster team.id %}" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Roster</a>
             </li>
-            <li class="schedule_item">
+            <li>
                 <a href="#" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Schedule</a>
             </li>
         </ul>
@@ -20,8 +20,9 @@
             <li>Goals for: {{ team.goals_for }}</li>
             <li>Goals against: {{ team.goals_against }}</li>
         </ul>
-        <div id="roster_{{ team.acronym }}" class="roster_dialog" title="{{ team.name }}">
-            <img id="loader" src="{{ STATIC_URL }}images/ajax-loader.gif" alt="Loading" />
+        <div id="roster_{{ team.id }}" class="roster_dialog" title="{{ team.name }}">
+            {{ team.acronym }}
+            {# <img id="loader" src="{{ STATIC_URL }}images/ajax-loader.gif" alt="Loading" /> #}
         </div>
     </div>
 </div>

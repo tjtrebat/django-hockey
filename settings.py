@@ -100,9 +100,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'hockey.urls'
+ROOT_URLCONF = 'urls'
 
-TEMPLATE_DIRS = ('C:/Users/Tom/PycharmProjects/hockey/templates',)
+TEMPLATE_DIRS = ('templates',)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -115,7 +115,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'hockey.nhl',
+    'nhl',
 )
 
 # A sample logging configuration. The only tangible logging
