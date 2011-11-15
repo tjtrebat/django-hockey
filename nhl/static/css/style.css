@@ -24,13 +24,20 @@ ul {
     top: 50%;
 }
 
-.roster_dialog {
+.roster {
     display: none;
-    text-align: center;
 }
 
-#loader {
-    margin-top: 20px;
+.roster p {
+    float: left;
+}
+
+.roster p span {
+    font-weight: bold;
+}
+
+.roster #loader {
+    float: right;
 }
 
 #roster_table {

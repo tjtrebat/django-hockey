@@ -20,9 +20,9 @@
             <li>Goals for: {{ team.goals_for }}</li>
             <li>Goals against: {{ team.goals_against }}</li>
         </ul>
-        <div id="roster_{{ team.id }}" class="roster_dialog" title="{{ team.name }}">
-            {{ team.acronym }}
-            {# <img id="loader" src="{{ STATIC_URL }}images/ajax-loader.gif" alt="Loading" /> #}
+        <div id="roster{{ forloop.counter }}" class="roster" title="{{ team.name }}">
+            <p><span>Loading...</span></p>
+            <img id="loader" src="{{ STATIC_URL }}images/ajax-loader.gif" alt="Loading" /> 
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@
     $(function(){
         $("#east_accordion,#west_accordion").accordion({header: "h3", collapsible: true, active: false});
         $("#tabs").tabs();
-        $(".roster_dialog").dialog({
+        $(".roster").dialog({
             autoOpen: false,
             width: 800,
             buttons: {
@@ -17,11 +17,9 @@
         });
         $(".dialog_list a").click(function(){
             if ($(this).parent().is(":first-child")) {
-                $(".roster_dialog:eq(" + $(this).closest("ul").index(".dialog_list") + ")").html());
-            //var team = $(this).closest("ul").attr("id");
-            //var roster = $("#roster_" + team);
-            //$(roster).load("/roster/" + team);
-            //$(roster).dialog("open");
+                var roster = "#" + $(".roster:eq(" + $(this).closest("ul").index(".dialog_list") + ")").attr("id");
+                $(roster).load($(this).attr("href"));
+                $(roster).dialog("open");
             }
             return false;
         });
