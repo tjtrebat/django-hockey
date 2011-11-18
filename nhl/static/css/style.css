@@ -24,19 +24,19 @@ ul {
     top: 50%;
 }
 
-.roster {
+.roster, .schedule {
     display: none;
 }
 
-.roster p {
+.roster p, .schedule p {
     float: left;
 }
 
-.roster p span {
+.roster p span, .schedule p span {
     font-weight: bold;
 }
 
-.roster #loader {
+.roster .loader, .schedule .loader {
     float: right;
 }
 

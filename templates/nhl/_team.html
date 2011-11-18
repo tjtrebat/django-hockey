@@ -6,7 +6,7 @@
                 <a href="{% url roster team.id %}" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Roster</a>
             </li>
             <li>
-                <a href="#" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Schedule</a>
+                <a href="{% url schedule team.id %}" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Schedule</a>
             </li>
         </ul>
         <ul>
@@ -22,7 +22,11 @@
         </ul>
         <div id="roster{{ forloop.counter }}" class="roster" title="{{ team.name }}">
             <p><span>Loading...</span></p>
-            <img id="loader" src="{{ STATIC_URL }}images/ajax-loader.gif" alt="Loading" /> 
+            <img class="loader" src="{{ STATIC_URL }}images/ajax-loader.gif" alt="Loading" />
+        </div>
+        <div id="schedule{{ forloop.counter }}" class="schedule" title="{{ team.name }}">
+            <p><span>Loading...</span></p>
+            <img class="loader" src="{{ STATIC_URL }}images/ajax-loader.gif" alt="Loading" />
         </div>
     </div>
 </div>

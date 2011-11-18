@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block js %}
-{{ block.super }}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
 <script type="text/javascript">
     $(function(){
         $("#east_accordion,#west_accordion").accordion({header: "h3", collapsible: true, active: false});
         $("#tabs").tabs();
-        $(".roster").dialog({
+        $(".roster,.schedule").dialog({
             autoOpen: false,
             width: 800,
             buttons: {
@@ -16,11 +17,10 @@
             }
         });
         $(".dialog_list a").click(function(){
-            if ($(this).parent().is(":first-child")) {
-                var roster = "#" + $(".roster:eq(" + $(this).closest("ul").index(".dialog_list") + ")").attr("id");
-                $(roster).load($(this).attr("href"));
-                $(roster).dialog("open");
-            }
+            var dialog = $(this).parent().is(":first-child") ? ".roster" : ".schedule";
+            dialog = "#" + $(dialog + ":eq(" + $(this).closest("ul").index(".dialog_list") + ")").attr("id");
+            $(dialog).load($(this).attr("href"));
+            $(dialog).dialog("open");
             return false;
         }).hover(
             function() { $(this).addClass('ui-state-hover'); },
