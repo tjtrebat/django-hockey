@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p>Team schedule here.</p>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Visiting Team</th>
+        <th>Home Team</th>
+        <th>Time</th>
+    </tr>
+    {% for game in games %}
+    <tr>
+        <td>{{ game.time|date }}</td>
+        <td>{{ game.visitor }}</td>
+        <td>{{ game.home }}</td>
+        <td>{{ game.time|time }} ET</td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}

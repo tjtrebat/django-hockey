@@ -17,8 +17,8 @@
             }
         });
         $(".dialog_list a").click(function(){
-            var dialog = $(this).parent().is(":first-child") ? ".roster" : ".schedule";
-            dialog = "#" + $(dialog + ":eq(" + $(this).closest("ul").index(".dialog_list") + ")").attr("id");
+            var dialog_class = $(this).parent().is(":first-child") ? ".roster" : ".schedule";
+            var dialog = "#" + $(dialog_class + ":eq(" + $(this).closest("ul").index(".dialog_list") + ")").attr("id");
             $(dialog).load($(this).attr("href"));
             $(dialog).dialog("open");
             return false;

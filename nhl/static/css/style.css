@@ -7,6 +7,15 @@ ul {
     list-style: none;
 }
 
+table {
+    font-size: 125%;
+    width: 100%;
+}
+
+table td {
+    text-align: center;
+}
+
 .dialog_list li {
     display: inline;
 }
@@ -38,13 +47,4 @@ ul {
 
 .roster .loader, .schedule .loader {
     float: right;
-}
-
-#roster_table {
-    font-size: 125%;
-    width: 100%;
-}
-
-#roster_table td {
-    text-align: center;
 }
