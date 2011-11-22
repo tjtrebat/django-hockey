@@ -33,18 +33,18 @@ table td {
     top: 50%;
 }
 
-.roster, .schedule {
+.dialog_roster, .dialog_schedule {
     display: none;
 }
 
-.roster p, .schedule p {
+.dialog_roster p, .dialog_schedule p {
     float: left;
 }
 
-.roster p span, .schedule p span {
+.dialog_roster p span, .dialog_schedule p span {
     font-weight: bold;
 }
 
-.roster .loader, .schedule .loader {
+.dialog_roster .loader, .dialog_schedule .loader {
     float: right;
 }
