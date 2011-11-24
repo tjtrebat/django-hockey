@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>P</th>
+        <th>Player</th>
+        <th>GP</th>
+        <th>G</th>
+        <th>A</th>
+        <th>Pts.</th>
+        <th>+/-</th>
+        <th>PIM</th>
+        <th>PP</th>
+        <th>SH</th>
+        <th>GW</th>
+        <th>S</th>
+        <th>S%</th>
+        <th>TOI/G</th>
+    </tr>
+    {% for player in players %}
+    <tr>
+        <td>{{ player.position }}</td>
+        <td>{{ player.name }}</td>
+        <td>{{ player.games_played }}</td>
+        <td>{{ player.goals }}</td>
+        <td>{{ player.assists }}</td>
+        <td>{{ player.points }}</td>
+        <td>{{ player.plus_minus }}</td>
+        <td>{{ player.penalty_minutes }}</td>
+        <td>{{ player.power_play_goals }}</td>
+        <td>{{ player.short_handed_goals }}</td>
+        <td>{{ player.game_winning_goals }}</td>
+        <td>{{ player.shots }}</td>
+        <td>{{ player.shot_percentage }}</td>
+        <td>{{ player.average_time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

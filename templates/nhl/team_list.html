@@ -1,34 +1,34 @@
 {% extends "base.html" %}
 
 {% block js %}
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript">
-    $(function(){
-        $("#east_accordion, #west_accordion").accordion({header: "h3", collapsible: true, active: false});
-        $("#tabs").tabs();
-        $(".dialog_roster, .dialog_schedule").dialog({
-            autoOpen: false,
-            width: 800,
-            height: 800,
-            buttons: {
-                "Ok": function() {
-                    $(this).dialog("close");
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#east_accordion, #west_accordion").accordion({header: "h3", collapsible: true, active: false});
+            $("#tabs").tabs();
+            $(".dialog_roster, .dialog_schedule").dialog({
+                autoOpen: false,
+                width: 800,
+                height: 500,
+                buttons: {
+                    "Ok": function() {
+                        $(this).dialog("close");
+                    }
                 }
-            }
+            });
+            var dialogs = {roster_item: "dialog_roster", schedule_item: "dialog_schedule"};
+            $(".dialog_list a").click(function(){
+                var dialog = "#" + $("." + dialogs[$(this).parent().attr("class")] + ":eq(" + $(this).closest("ul").index(".dialog_list") + ")").attr("id");
+                $(dialog).load($(this).attr("href"));
+                $(dialog).dialog("open");
+                return false;
+            }).hover(
+                function() { $(this).addClass('ui-state-hover'); },
+                function() { $(this).removeClass('ui-state-hover'); }
+            );
         });
-        var dialogs = {roster_item: "dialog_roster", schedule_item: "dialog_schedule"};
-        $(".dialog_list a").click(function(){
-            var dialog = "#" + $("." + dialogs[$(this).parent().attr("class")] + ":eq(" + $(this).closest("ul").index(".dialog_list") + ")").attr("id");
-            $(dialog).load($(this).attr("href"));
-            $(dialog).dialog("open");
-            return false;
-        }).hover(
-            function() { $(this).addClass('ui-state-hover'); },
-            function() { $(this).removeClass('ui-state-hover'); }
-        );
-    });
-</script>
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -58,4 +58,3 @@
     </div>
 </div>
 {% endblock %}
-
